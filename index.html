@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>智慧物流城市末端配送可视化-郭不耐</title>
+    <style media="screen">
+    #loading {
+        z-index: 998;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      color: #ccc;
+      font-size: 14px;
+      font-family: 'Microsoft Yahei', Simhei, Arial;
+      /*text-anchor: middle;
+      text-align: center;*/
+      transform: translate(-50%, -50%);
+    }
+
+    #circles {
+        z-index: 999;
+    }
+
+    .circles {
+      height: 40vmin;
+      width: 40vmin;
+      position: absolute;
+      margin: 0 auto;
+      top: 50%;
+      left: 50%;
+      -moz-transform: translate3D(-50%, -50%, 0);
+      -webkit-transform: translate3D(-50%, -50%, 0);
+              transform: translate3D(-50%, -50%, 0);
+    }
+
+    .circle {
+        opacity: 0.8;
+      box-sizing: border-box;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 2.5vmin solid transparent;
+      border-radius: 105% 140% 145% 110%/125% 150% 110% 125%;
+      mix-blend-mode: screen;
+    }
+    .circle:nth-child(1) {
+        /*opacity: 0.3;*/
+      border-color: #DB4437;
+      -moz-transform-origin: 50% 50%;
+      -webkit-transform-origin: 50% 50%;
+              transform-origin: 50% 50%;
+    -moz-animation: spin1 5.5s linear infinite;
+      -webkit-animation: spin1 5.5s linear infinite;
+              animation: spin1 5.5s linear infinite;
+    }
+    .circle:nth-child(2) {
+      border-color: #F4B400;
+      -moz-transform-origin: 50% 50%;
+      -webkit-transform-origin: 50% 50%;
+              transform-origin: 50% 50%;
+    -moz-animation: spin2 5.5s linear infinite;
+      -webkit-animation: spin2 5.5s linear infinite;
+              animation: spin2 5.5s linear infinite;
+    }
+    .circle:nth-child(3) {
+      border-color: #4285F4;
+      -moz-transform-origin: 50% 50%;
+      -webkit-transform-origin: 50% 50%;
+              transform-origin: 50% 50%;
+    -moz-animation: spin3 5.5s linear infinite;
+      -webkit-animation: spin3 5.5s linear infinite;
+              animation: spin3 5.5s linear infinite;
+    }
+    .circle:nth-child(4) {
+      /*opacity: 0.1;*/
+      border-color: #0F9D58;
+      -moz-transform-origin: 50% 50%;
+      -webkit-transform-origin: 50% 50%;
+              transform-origin: 50% 50%;
+    -moz-animation: spin4 5.5s linear infinite;
+      -webkit-animation: spin4 5.5s linear infinite;
+              animation: spin4 5.5s linear infinite;
+    }
+
+    @-moz-keyframes spin1 {
+      0% {
+        -moz-transform: rotate(0);
+      }
+      100% {
+        -moz-transform: rotate(360deg);
+      }
+    }
+
+    @-webkit-keyframes spin1 {
+      0% {
+        -webkit-transform: rotate(0);
+                transform: rotate(0);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+      }
+    }
+
+    @keyframes spin1 {
+      0% {
+        -webkit-transform: rotate(0);
+                transform: rotate(0);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+      }
+    }
+
+    @-moz-keyframes spin2 {
+      0% {
+        -moz-transform: rotate(72deg);
+      }
+      100% {
+        -moz-transform: rotate(-288deg);
+      }
+    }
+
+    @-webkit-keyframes spin2 {
+      0% {
+        -webkit-transform: rotate(72deg);
+                transform: rotate(72deg);
+      }
+      100% {
+        -webkit-transform: rotate(-288deg);
+                transform: rotate(-288deg);
+      }
+    }
+    @keyframes spin2 {
+      0% {
+        -webkit-transform: rotate(72deg);
+                transform: rotate(72deg);
+      }
+      100% {
+        -webkit-transform: rotate(-288deg);
+                transform: rotate(-288deg);
+      }
+    }
+
+    @-moz-keyframes spin3 {
+      0% {
+        -moz-transform: rotate(-144deg);
+      }
+      100% {
+        -moz-transform: rotate(-216deg);
+      }
+    }
+
+    @-webkit-keyframes spin3 {
+      0% {
+        -webkit-transform: rotate(-144deg);
+                transform: rotate(-144deg);
+      }
+      100% {
+        -webkit-transform: rotate(216deg);
+                transform: rotate(216deg);
+      }
+    }
+    @keyframes spin3 {
+      0% {
+        -webkit-transform: rotate(-144deg);
+                transform: rotate(-144deg);
+      }
+      100% {
+        -webkit-transform: rotate(216deg);
+                transform: rotate(216deg);
+      }
+    }
+
+    @-moz-keyframes spin4 {
+      0% {
+        -moz-transform: rotate(216deg);
+      }
+      100% {
+        -moz-transform: rotate(-144deg);
+      }
+    }
+
+    @-webkit-keyframes spin4 {
+      0% {
+        -webkit-transform: rotate(216deg);
+                transform: rotate(216deg);
+      }
+      100% {
+        -webkit-transform: rotate(-144deg);
+                transform: rotate(-144deg);
+      }
+    }
+    @keyframes spin4 {
+      0% {
+        -webkit-transform: rotate(216deg);
+                transform: rotate(216deg);
+      }
+      100% {
+        -webkit-transform: rotate(-144deg);
+                transform: rotate(-144deg);
+      }
+    }
+    body,
+    html {
+      background-color: black;
+    }
+
+    .warning {
+      color: white;
+      font-family: sans-serif;
+      text-align: center;
+      display: inline-block;
+      padding: 50%;
+      width: 80%;
+      top: 50%;
+      left: 50%;
+      position: absolute;
+      -webkit-transform: translate3D(-50%, -50%, 0);
+              transform: translate3D(-50%, -50%, 0);
+    }
+
+    @supports (mix-blend-mode: screen) {
+      .warning {
+        display: none;
+      }
+    }
+    </style>
+</head>
+<body>
+    <div id='loading'>载入中，请稍侯 ......</div>
+
+    <div class="circles" id="circles">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+
+    <!-- <app></app> -->
+    <div id="app"></div>
+    <script src="projects/tomahawk/dist/build.js"></script>
+</body>
+</html>
